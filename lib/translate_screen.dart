@@ -50,14 +50,20 @@ class _TranslateScreenState extends State<TranslateScreen> {
                 children:   [
                   
                   CupertinoTextField(
+                    style: const TextStyle(
+                      color: Colors.black
+                    ),
                     decoration:  BoxDecoration(
                       color: const Color(0xffffffff),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     controller: textEditingController,
                     autofocus: false,
-                    placeholder: "Seslendirmesini duymak istediğin metni gir",
-                    minLines: 10,
+                    placeholder: "enter the text you want to translate",
+                    placeholderStyle: const TextStyle(
+                      color: Color.fromARGB(255, 201, 201, 202)
+                    ),
+                    minLines: 1,
                     maxLines: 20,
                     cursorColor: const Color(0xff30D059),
                     
