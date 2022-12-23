@@ -30,13 +30,19 @@ class _TranslateScreenState extends State<TranslateScreen> {
       In Flutter, the http.post method is used to send an HTTP POST request to a server. It takes two required arguments: the URL to send the request to, and the body of the request.
     */
     Response response = await http.post(
-      Uri.parse("https://google-translate1.p.rapidapi.com/language/translate/v2/detect"),
+      Uri.parse("https://google-translate1.p.rapidapi.com/language/translate/v2"),
         headers: { // In the context of an HTTP POST request, headers can be used to provide information about the request payload
         "content-type": "application/x-www-form-urlencoded",
         "Accept-Encoding": "application/gzip",
         "X-RapidAPI-Key": "f8b372e531msh197b796b14029d6p172a34jsn5022c69f1603",
         "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
-      }
+      },
+
+      body: jsonEncode(<String, String>{
+        "q" : "hi",
+        "target": "es",
+        "source":"en",
+      })
     );
     // http.post function returns a Future<Response> object, which represents the response from the server
 
@@ -48,7 +54,8 @@ class _TranslateScreenState extends State<TranslateScreen> {
     // The json.decode function takes a JSON string as input and returns the corresponding Dart object.
 
 
-    
+    print(responseBody);
+    print(response.statusCode);
 
   } 
 
@@ -108,6 +115,24 @@ class _TranslateScreenState extends State<TranslateScreen> {
                   const SizedBox(
                     height: 8,
                   ),
+
+                  CupertinoButton(
+                    minSize: 10,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 7,
+                      vertical: 5,
+                    ),
+                    color: Colors.white,
+                    child: const Text(
+                      "translate",
+                      style: TextStyle(
+                        color: CupertinoColors.systemBlue,
+                      ),
+                    ),
+                    onPressed: () {
+                      wordMeaning();
+                    },
+                  )
                   
     
                   
